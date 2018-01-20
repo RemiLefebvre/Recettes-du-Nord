@@ -1,0 +1,7 @@
+rdn_site:
+    resource: "@rdnSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
