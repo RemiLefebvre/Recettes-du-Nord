@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Recettes Du Nord{% endblock %}</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/rdn/app/Resources/views/style.css">
+    <link rel="stylesheet" href="/app/Resources/views/style.css">
+    <script src="https://use.fontawesome.com/4d141429f4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Princess+Sofia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montez" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+
+    <!-- carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
+
+    <!-- BOOSTRAP -->
+    <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <header id="header" class="hidden-sm-down">
+      <figure class="logo">
+        <img src="https://cdn.sstatic.net/Sites/cooking/img/apple-touch-icon@2.png?v=f987de6cbbd2" alt="logo">
+      </figure>
+
+      <nav>
+        <ul>
+          <li>
+            <a href="index.php">Accueil</a>
+          </li>
+          <li>
+            <a href="recettes.php">Recettes</a>
+          </li>
+          <li>
+            <a href="contact.php">Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="navUser">
+        <form class="search form-inline">
+          <input tabindex="-1" class="searchZone" type="text" placeholder="">
+        </form>
+
+        <a id="connexion" href="login.php">
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          Connexion</a>
+      </div>
+    </header>
+
+    <header id="headerPhone" class="hidden-md-up">
+      <figure class="logo">
+        <img src="https://cdn.sstatic.net/Sites/cooking/img/apple-touch-icon@2.png?v=f987de6cbbd2" alt="logo">
+      </figure>
+
+      <h1>Recettes du Nord</h1>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="menu btn" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Recettes du Nord</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <ul>
+                <li>
+                  <a href="index.php">Accueil</a>
+                </li>
+                <li>
+                  <a href="recettes.php">Recettes</a>
+                </li>
+                <li>
+                  <a href="contact.php">Contact</a>
+                </li>
+                <li>
+                  <a href="login.php">Connexion</a>
+                </li>
+                <li>
+                  <form class="search form-inline">
+                    <input class="searchZone" tabindex="-1" type="text" placeholder="Rechercher">
+                    <input class="ok" type="submit" name="" value="ok">
+                  </form>
+                </li>
+              </ul>
+
+              <button type="button" class="btn closeMenu" data-dismiss="modal">Retour</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+
+    {% block body %}
+  {% endblock %}
+
+
+
+
+    <footer class="">
+      <div class="container-fluid bg-faded footerUp">
+        <div class="container">
+          <div class="row py-3">
+            <!-- footer column 1 start -->
+            <div class="col-md-4">
+              <!-- row start -->
+              <div class="row py-2">
+                <!-- hidden-md-down -->
+                <div class="col-sm-3 ">
+                  <a class="bg-circle  " href="https://twitter.com/ ">
+                    <i class="fa fa-2x fa-facebook" aria-hidden="true "></i>
+                  </a>
+                </div>
+                <div class="col-sm-9">
+                  <h4>Facebook</h4>
+                  Suivez nous sur Facebook
+                </div>
+              </div>
+              <!-- row end -->
+            </div>
+            <!-- footer column 1 end -->
+            <!-- footer column 2 start -->
+            <div class="col-md-4">
+              <!-- row start -->
+              <div class="row py-2">
+                <!-- hidden-md-down -->
+                <div class="col-sm-3 ">
+                  <a class="bg-circle  " href="#">
+                    <i class="fa fa-2x fa-fw fa-twitter" aria-hidden="true "></i>
+                  </a>
+                </div>
+                <div class="col-sm-9">
+                  <h4>Twitter</h4>
+                  <p>Suivez nous sur Twitter</p>
+                </div>
+              </div>
+              <!-- row end -->
+              <!-- row start -->
+              <div class="row py-2">
+                <!-- hidden-md-down -->
+                <div class="col-sm-3 ">
+                  <a class="bg-circle  " href="#">
+                    <i class="fa fa-2x fa-fw fa-address-card" aria-hidden="true "></i>
+                  </a>
+                </div>
+                <div class="col-sm-9">
+                  <h4>Contactez nous</h4>
+                  <p>Une question? Une suggestion?</p>
+                </div>
+              </div>
+
+              <!-- row end -->
+            </div>
+            <!-- footer column 2 end -->
+            <!-- footer column 3 start -->
+            <div class="col-md-4">
+              <!-- row starting -->
+              <div class="row py-2">
+                <!-- hidden-md-down -->
+                <div class="col-sm-3 ">
+                  <a class="bg-circle  " href="recettes.php">
+                    <i class="fa fa-2x fa-fw fa-file-pdf-o" aria-hidden="true "></i>
+                  </a>
+                </div>
+                <div class="col-sm-9">
+                  <h4>Toutes les recettes</h4>
+                  <p>
+                    L'abécédaire</a>
+                </p>
+
+              </div>
+            </div>
+            <!-- row ended -->
+            <!-- row starting -->
+            <div class="row py-2">
+              <!-- hidden-md-down -->
+              <div class="col-sm-3 ">
+                <a class="bg-circle  " href="https://twitter.com/ ">
+                  <i class="fa fa-2x fa-fw fa-info" aria-hidden="true "></i>
+                </a>
+              </div>
+              <div class="col-sm-9">
+                <h4>Infos</h4>
+                A propos de nous.
+              </div>
+            </div>
+            <!-- row ended -->
+          </div>
+          <!-- footer column 3 end -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid bg-primary py-3">
+      <div class="container">
+        <div class="row py-3">
+          <div class="col-md-9">
+            <p class="text-white">Recettes authentiques des hauts de France.</p>
+          </div>
+          <div class="col-md-3">
+            <div class="d-inline-block">
+              <div class="bg-circle-outline d-inline-block">
+                <a href="https://www.facebook.com/" class="text-white">
+                  <i class="fa fa-2x fa-fw fa-facebook"></i>
+                </a>
+              </div>
+
+              <div class="bg-circle-outline d-inline-block">
+                <a href="https://twitter.com/" class="text-white">
+                  <i class="fa fa-2x fa-fw fa-twitter"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript"></script>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <!-- carousel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
+  <script>
+
+    var mySwiper = new Swiper('.swiper-container', {
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination'
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+
+      autoplay: {
+        delay: 4000
+      },
+
+      speed: 1900,
+
+      parallax: true,
+
+      // And if we need scrollbar scrollbar: {   el: '.swiper-scrollbar', },
+    })
+
+    var mySwiper = new Swiper('.swiper-containerLogin', {
+      direction: 'horizontal',
+
+      autoplay: {
+        delay: 100000
+      },
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      }
+    });
+  </script>
+</body>
+</html>

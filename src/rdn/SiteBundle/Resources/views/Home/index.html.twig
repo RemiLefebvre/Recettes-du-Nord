@@ -1,0 +1,187 @@
+{# src/OC/PlatformBundle/Resources/views/Advert/index.html.twig #}
+{% extends "rdnSiteBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+{% block body %}
+
+
+<!-- Full Screen -->
+<section id="home">
+  <h1>Recettes du Nord</h1>
+</section>
+
+<div class="afterHome">
+</div>
+
+
+<!-- Last articles & coms -->
+<section id="arts" class="container-fluid">
+
+  <div class="h2">
+    <h2>Dernières recettes</h2>
+  </div>
+
+  <div class="lastArticles">
+    <!-- Last articles -->
+
+    <!-- 1 -->
+    <a href="recette.php">
+      <article class="lastArticle" style="background-image:url('image/moules-frites.jpg')">
+        <h3>Moules Frites</h3>
+      </article>
+    </a>
+
+    <!-- 2 -->
+    <a href="recette.php">
+      <article class="lastArticle" style="background-image:url('image/potjevleesh.jpg')">
+        <h3>Potjevleesh</h3>
+      </article>
+    </a>
+
+    <!-- 3 -->
+    <a href="recette.php">
+      <article class="lastArticle" style="background-image:url('image/carbonnade.jpg')">
+        <h3>Carbonnade Flamande</h3>
+      </article>
+    </a>
+
+    <!-- 4 -->
+    <a href="recette.php">
+      <article class="lastArticle" style="background-image:url('image/welsh.jpg')">
+        <h3>Welsh Rarebit</h3>
+      </article>
+    </a>
+  </div>
+
+  <div class="lastArticles">
+    <!-- Last articles -->
+
+    <!-- 1 -->
+    <a href="recette.php">
+      <article class="lastArticle" style="background-image:url('image/welsh.jpg')">
+        <h3>Welsh Rarebit</h3>
+      </article>
+    </a>
+
+    <!-- 2 -->
+    <a href="recette.php">
+      <article class="lastArticle" style="background-image:url('image/carbonnade.jpg')">
+        <h3>Carbonnade Flamande</h3>
+      </article>
+    </a>
+
+    <!-- 3 -->
+    <a href="recette.php">
+      <article class="lastArticle" style="background-image:url('image/moules-frites.jpg')">
+        <h3>Moules Frites</h3>
+      </article>
+    </a>
+
+    <!-- 4 -->
+    <a href="recette.php">
+      <article class="lastArticle" style="background-image:url('image/potjevleesh.jpg')">
+        <h3>Potjevleesh</h3>
+      </article>
+    </a>
+  </div>
+</section>
+
+
+<!-- Catégory -->
+<section id="category" class="container-fluid">
+  <div class="paradoxe">
+    <div class="h2">
+      <h2>mmmmmmh.. Une bonne bière</h2>
+    </div>
+
+    <div class="beers">
+
+      <a href="recette.php">
+        <figure class="blanche">
+          <img src="image/biereBlanche.png" alt="">
+          <h3>Blanche</h3>
+        </figure>
+      </a>
+
+      <a href="recette.php">
+        <figure class="blonde">
+          <img src="image/biereBlonde.png" alt="">
+          <h3>Blonde</h3>
+        </figure>
+      </a>
+
+      <a href="recette.php">
+        <figure class="ambree">
+          <img src="image/biereAmbree.png" alt="">
+          <h3>Ambrée</h3>
+        </figure>
+      </a>
+
+      <a href="recette.php">
+        <figure class="brune">
+          <img src="image/biere.png" alt="">
+          <h3>Brune</h3>
+        </figure>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="coms" class=" container-fluid">
+  <div class="h2">
+    <h2>Derniers commentaires</h2>
+  </div>
+
+  <div class="lastComs">
+
+
+    <div class="swiper-container">
+
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div data-swiper-parallax-opacity="0.1" data-swiper-parallax="-300" data-swiper-parallax-duration="600" class="comImgRecette" style="background-image:url('image/carbonnade.jpg')">
+                <h3 >Carbonnade Flamande</h3>
+              </div>
+              <div class="comFull">
+                <figure  data-swiper-parallax="-100" class="autorImg">
+                  <img src="http://fr.web.img3.acsta.net/c_215_290/pictures/16/07/19/16/33/125610.jpg" alt="autor">
+                </figure>
+                <h4 data-swiper-parallax="-1600">Didier.D</h4>
+                <cite data-swiper-parallax="-300">"Super recettes youpi très bon bravo salut "</cite>
+                <br>
+                <a data-swiper-parallax="-1600" href="#">voir recette</a>
+              </div>
+            </div>
+
+
+            <div class="swiper-slide">
+              <div data-swiper-parallax-opacity="0.1" data-swiper-parallax="-300" data-swiper-parallax-duration="600" class="comImgRecette" style="background-image:url('image/potjevleesh.jpg')">
+                <h3 >Potjevleesh</h3>
+              </div>
+              <div class="comFull">
+                <figure  data-swiper-parallax="-100" class="autorImg">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/St%C3%A9phane_Bern_-_Foire_du_Livre_de_Bruxelles_2011_-_04.JPG/200px-St%C3%A9phane_Bern_-_Foire_du_Livre_de_Bruxelles_2011_-_04.JPG" alt="autor">
+                </figure>
+                <h4 data-swiper-parallax="-1600">Stephou.H</h4>
+                <cite data-swiper-parallax="-300">"Historiquement et gustativement fabuleux à faire et à refaire , note: j'ai rajouté du sperm . merci & salut "</cite>
+                <br>
+                <a data-swiper-parallax="-1600" href="#">voir recette</a>
+              </div>
+            </div>
+
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+    </div>
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

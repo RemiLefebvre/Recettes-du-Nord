@@ -1,3 +1,28 @@
-rdn_site_homepage:
+# src/OC/PlatformBundle/Resources/config/routing.yml
+
+home:
     path:     /
-    defaults: { _controller: rdnSiteBundle:Default:index }
+    defaults:
+      _controller: rdnSiteBundle:Home:index
+
+recettes:
+    path:     /recettes
+    defaults:
+       _controller: rdnSiteBundle:Home:recettes
+
+recette:
+    path:     /recette/{id}
+    defaults:
+      _controller: rdnSiteBundle:Home:recette
+    requirements:
+      id: \d+
+
+contact:
+    path:     /contact
+    defaults:
+      _controller: rdnSiteBundle:Home:contact
+
+login:
+    path:     /login
+    defaults:
+      _controller: rdnSiteBundle:Home:login
