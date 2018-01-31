@@ -1,7 +1,7 @@
 # src/OC/PlatformBundle/Resources/config/routing.yml
 
-home:
-    path:     /
+accueil:
+    path:     /accueil
     defaults:
       _controller: rdnSiteBundle:Home:index
 
