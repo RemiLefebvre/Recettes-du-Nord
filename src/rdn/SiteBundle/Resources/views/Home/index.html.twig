@@ -25,65 +25,31 @@
   <div class="lastArticles">
     <!-- Last articles -->
 
+    {% for recette in recettesTop %}
     <!-- 1 -->
     <a href="{{ path('recette', {'id':1}) }}">
-      <article class="lastArticle" style="background-image:url('image/moules-frites.jpg')">
-        <h3>Moules Frites</h3>
+      <article class="lastArticle" style="background-image:url('{{ recette.img }}')">
+        <h3>{{ recette.name }}</h3>
       </article>
     </a>
+    {% endfor %}
 
-    <!-- 2 -->
-    <a href="{{ path('recette', {'id':1}) }}">
-      <article class="lastArticle" style="background-image:url('image/potjevleesh.jpg')">
-        <h3>Potjevleesh</h3>
-      </article>
-    </a>
 
-    <!-- 3 -->
-    <a href="{{ path('recette', {'id':1}) }}">
-      <article class="lastArticle" style="background-image:url('image/carbonnade.jpg')">
-        <h3>Carbonnade Flamande</h3>
-      </article>
-    </a>
 
-    <!-- 4 -->
-    <a href="{{ path('recette', {'id':1}) }}">
-      <article class="lastArticle" style="background-image:url('image/welsh.jpg')">
-        <h3>Welsh Rarebit</h3>
-      </article>
-    </a>
   </div>
 
   <div class="lastArticles">
     <!-- Last articles -->
 
+    {% for recette in recettesBottom %}
     <!-- 1 -->
     <a href="{{ path('recette', {'id':1}) }}">
-      <article class="lastArticle" style="background-image:url('image/welsh.jpg')">
-        <h3>Welsh Rarebit</h3>
+      <article class="lastArticle" style="background-image:url('{{ recette.img }}')">
+        <h3>{{ recette.name }}</h3>
       </article>
     </a>
+    {% endfor %}
 
-    <!-- 2 -->
-    <a href="{{ path('recette', {'id':1}) }}">
-      <article class="lastArticle" style="background-image:url('image/carbonnade.jpg')">
-        <h3>Carbonnade Flamande</h3>
-      </article>
-    </a>
-
-    <!-- 3 -->
-    <a href="{{ path('recette', {'id':1}) }}">
-      <article class="lastArticle" style="background-image:url('image/moules-frites.jpg')">
-        <h3>Moules Frites</h3>
-      </article>
-    </a>
-
-    <!-- 4 -->
-    <a href="{{ path('recette', {'id':1}) }}">
-      <article class="lastArticle" style="background-image:url('image/potjevleesh.jpg')">
-        <h3>Potjevleesh</h3>
-      </article>
-    </a>
   </div>
 </section>
 

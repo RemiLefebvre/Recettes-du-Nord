@@ -13,8 +13,40 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
-        $content = $this->renderView('rdnSiteBundle:Home:index.html.twig',array('nom' => 'winzou'));
+      $repository = $this->getDoctrine()
+        ->getManager()
+        ->getRepository('rdnSiteBundle:Home')
+      ;
 
+      $recettesTop = $repository->findBy(
+        array(), // Critere
+        array(),        // Tri
+        4,                              // Limite
+        0                               // Offset
+      );
+
+      $recettesBottom = $repository->findBy(
+        array(), // Critere
+        array(),        // Tri
+        4,                              // Limite
+        4                               // Offset
+      );
+
+      // $recettes est donc une instance de OC\PlatformBundle\Entity\Advert
+      // ou null si l'id $id  n'existe pas, d'où ce if :
+      if (null === $recettesTop OR null === $recettesBottom ) {
+        // A CHANGER >> ALLER VERS CONTOLLEUR ACCUEIL
+        $content = $this->renderView('rdnSiteBundle:Home:index.html.twig',array('nom' => 'winzou'));
+        return new Response($content);
+      }
+
+        $content = $this->renderView('rdnSiteBundle:Home:index.html.twig',array(
+                                                                                'recettesTop' => $recettesTop,
+                                                                                'recettesBottom' => $recettesBottom,
+                                                                              ));
+
+        // echo "<pre>";
+        // die(var_dump($recettesTop));
         return new Response($content);
     }
 
@@ -36,18 +68,20 @@ class HomeController extends Controller
         ;
 
         // On récupère l'entité correspondante à l'id $id
-        $recette = $repository->find($id);
+        $recettes = $repository->find($id);
         // die("oui");
 
-        // $recette est donc une instance de OC\PlatformBundle\Entity\Advert
+        // $recettes est donc une instance de OC\PlatformBundle\Entity\Advert
         // ou null si l'id $id  n'existe pas, d'où ce if :
-        if (null === $recette) {
+        if (null === $recettes) {
+
+          // A CHANGER >> ALLER VERS CONTOLLEUR ACCUEIL
           $content = $this->renderView('rdnSiteBundle:Home:index.html.twig',array('nom' => 'winzou'));
           return new Response($content);
         }
 
-        // die(var_dump($recette));
-        $content = $this->renderView('rdnSiteBundle:Home:recette.html.twig',array('recette' => $recette));
+        // die(var_dump($recettes));
+        $content = $this->renderView('rdnSiteBundle:Home:recette.html.twig',array('recette' => $recettes));
 
         return new Response($content);
     }
