@@ -13,74 +13,37 @@
   </div>
 
 
-  <!-- 1 -->
-  <div class="letter">
-      <h3>A</h3>
-  </div>
+{% set tab = [] %}
+{% for recette in recettes %}
 
-  <!-- 1 -->
-  <a class="recette" href="recette.php">
-    <article class="lastArticle" style="background-image:url('image/moules-frites.jpg')">
-      <h3>Moules Frites</h3>
-    </article>
-  </a>
-
-  <!-- 1 -->
-  <a class="recette" href="recette.php">
-    <article class="lastArticle" style="background-image:url('image/potjevleesh.jpg')">
-      <h3>Potjevleesh</h3>
-    </article>
-  </a>
+  {% if recette.name|first|lower in tab %}
 
 
-
-  <!-- 1 -->
-  <a class="recette" href="recette.php">
-    <article class="lastArticle" style="background-image:url('image/carbonnade.jpg')">
-      <h3>Carbonnade</h3>
-    </article>
-  </a>
-
-  <!-- 1 -->
-  <div class="letter" href="#">
-    <h3>B</h3>
-  </div>
+    <a class="recette" href="{{ path('recette', {'id': recette.id }) }}">
+      <article class="lastArticle" style="background-image:url('{{ recette.img }}')">
+        <h3>{{ recette.name }}</h3>
+      </article>
+    </a>
 
 
-  <!-- 1 -->
-  <a class="recette" href="recette.php">
-    <article class="lastArticle" style="background-image:url('image/welsh.jpg')">
-      <h3>Welsh</h3>
-    </article>
-  </a>
+  {% else %}
 
-  <!-- 1 -->
-  <div class="letter" href="#">
-      <h3>C</h3>
-  </div>
+  {% set tab = [recette.name|first|lower] %}
 
-  <!-- 1 -->
-  <a class="recette" href="recette.php">
-    <article class="lastArticle" style="background-image:url('image/moules-frites.jpg')">
-      <h3>Moules Frites</h3>
-    </article>
-  </a>
+    <div class="letter">
+      <h3>{{ recette.name|first }}</h3>
+    </div>
 
-  <!-- 1 -->
-  <a class="recette" href="recette.php">
-    <article class="lastArticle" style="background-image:url('image/potjevleesh.jpg')">
-      <h3>Potjevleesh</h3>
-    </article>
-  </a>
+    <a class="recette" href="{{ path('recette', {'id': recette.id }) }}">
+      <article class="lastArticle" style="background-image:url('{{ recette.img }}')">
+        <h3>{{ recette.name }}</h3>
+      </article>
+    </a>
+
+  {% endif %}
 
 
-
-  <!-- 1 -->
-  <a class="recette" href="recette.php">
-    <article class="lastArticle" style="background-image:url('image/carbonnade.jpg')">
-      <h3>Carbonnade</h3>
-    </article>
-  </a>
+{% endfor %}
 
 
 
