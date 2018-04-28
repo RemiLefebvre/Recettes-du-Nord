@@ -26,3 +26,8 @@ login:
     path:     /login
     defaults:
       _controller: rdnSiteBundle:Home:login
+
+add:
+    path:     /add
+    defaults:
+      _controller: rdnSiteBundle:Home:add
