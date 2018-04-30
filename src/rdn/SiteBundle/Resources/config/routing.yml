@@ -27,6 +27,11 @@ login:
     defaults:
       _controller: rdnSiteBundle:Home:login
 
+add_message:
+    path:     /add_message
+    defaults:
+      _controller: rdnSiteBundle:Home:add_message
+
 add:
     path:     /add
     defaults:

@@ -5,11 +5,17 @@
 namespace rdn\SiteBundle\Controller;
 
 use rdn\SiteBundle\Entity\Home;
+use rdn\SiteBundle\Entity\Message;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 // POST GET
 use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class HomeController extends Controller
 {
@@ -136,9 +142,48 @@ class HomeController extends Controller
 
     public function contactAction()
     {
-        $content = $this->renderView('rdnSiteBundle:Home:contact.html.twig',array('nom' => 'oui'));
+      $message = new Message();
+
+      $form = $this->createFormBuilder($message)
+           ->setAction($this->generateUrl('add_message'))
+           ->setMethod('POST')
+           ->add('name', TextType::class)
+           ->add('surname', TextType::class)
+           ->add('subject', TextType::class)
+           ->add('email', EmailType::class)
+           ->add('message', TextareaType::class)
+           ->add('send', SubmitType::class, array('label' => 'Envoyer'))
+           ->getForm();
+
+        $content = $this->renderView('rdnSiteBundle:Home:contact.html.twig',array('form' => $form->createView()));
 
         return new Response($content);
+    }
+
+    public function add_messageAction(Request $request)
+    {
+        $message = new Message();
+        $post = $_POST['form'];
+        $message->setName($post['name']);
+        $message->setSurname($post['surname']);
+        $message->setSubject($post['subject']);
+        $message->setEmail($post['email']);
+        $message->setMessage($post['message']);
+
+        // On récupère l'EntityManager
+         $em = $this->getDoctrine()->getManager();
+
+         // Étape 1 : On « persiste » l'entité
+         $em->persist($message);
+
+         // Étape 2 : On « flush » tout ce qui a été persisté avant
+         $em->flush();
+
+         $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+
+         // Puis on redirige vers la page de visualisation de cettte annonce
+         return $this->redirectToRoute('accueil');
+
     }
 
     public function loginAction()
