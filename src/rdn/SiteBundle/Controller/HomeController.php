@@ -121,8 +121,7 @@ class HomeController extends Controller
       // On récupère le repository
         $repository = $this->getDoctrine()
           ->getManager()
-          ->getRepository('rdnSiteBundle:Home')
-        ;
+          ->getRepository('rdnSiteBundle:Home');
 
         $recette = $repository->find($id);
 
