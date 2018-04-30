@@ -9,8 +9,11 @@ use rdn\SiteBundle\Entity\Message;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 // POST GET
 use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\HttpFoundation\Session\Session;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -177,8 +180,6 @@ class HomeController extends Controller
 
          // Étape 2 : On « flush » tout ce qui a été persisté avant
          $em->flush();
-
-         $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
          // Puis on redirige vers la page de visualisation de cettte annonce
          return $this->redirectToRoute('accueil');

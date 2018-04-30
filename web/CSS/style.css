@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Julius+Sans+One|Tangerine");
 body, html {
   width: 100%;
   background-image: url("https://i0.wp.com/vozer.fr/wp-content/uploads/2017/09/MoulesFrites.jpg?fit=1200%2C738");
@@ -87,7 +88,7 @@ body, html {
       width: 100%; }
   #headerPhone h1 {
     color: white;
-    font-family: 'Montez', cursive;
+    font-family: 'Tangerine', cursive;
     font-weight: 500;
     font-size: 28px;
     padding-top: 5px; }
@@ -114,7 +115,7 @@ body, html {
     border: none;
     border-radius: 0; }
     .modal-dialog .modal-content .modal-header h5 {
-      font-family: 'Montez', cursive;
+      font-family: 'Tangerine', cursive;
       font-size: 32px;
       font-weight: 700; }
     .modal-dialog .modal-content .modal-body {
@@ -173,8 +174,7 @@ body, html {
     top: 35%;
     color: white;
     text-shadow: 0 0 20px black;
-    font-family: 'Princess Sofia', cursive;
-    font-family: 'Montez', cursive;
+    font-family: 'Tangerine', cursive;
     font-weight: 500;
     font-size: 125px; }
   @media (max-width: 550px) {
@@ -253,12 +253,12 @@ body, html {
           bottom: 0;
           margin: 0;
           color: white;
-          font-size: 56px;
+          font-size: 66px;
           font-weight: 500;
           background: -moz-linear-gradient(top, transparent 0%, #000000 90%);
           background: -webkit-linear-gradient(top, transparent 0%, #000000 90%);
           background: linear-gradient(to bottom, transparent 0%, #000000 90%);
-          font-family: 'Montez', cursive; }
+          font-family: 'Tangerine', cursive; }
         @media (max-width: 550px) {
           #arts .lastArticles a .lastArticle h3 {
             font-size: 25px;
@@ -328,7 +328,7 @@ body, html {
           #category .paradoxe .beers a .blanche h3, #category .paradoxe .beers a .blonde h3, #category .paradoxe .beers a .brune h3, #category .paradoxe .beers a .ambree h3 {
             text-align: center;
             color: black;
-            font-family: 'Montez', cursive;
+            font-family: 'Tangerine', cursive;
             font-size: 75px; }
           @media (max-width: 800px) {
             #category .paradoxe .beers a .blanche h3, #category .paradoxe .beers a .blonde h3, #category .paradoxe .beers a .brune h3, #category .paradoxe .beers a .ambree h3 {
@@ -380,7 +380,7 @@ body, html {
             bottom: 0;
             margin: 0;
             padding: 10px 0;
-            font-family: 'Montez', cursive;
+            font-family: 'Tangerine', cursive;
             text-align: center;
             color: white;
             font-size: 2.3em;
@@ -545,7 +545,7 @@ footer .bg-circle-outline a, footer a:hover, footer .media a:focus {
         background: -webkit-linear-gradient(top, transparent 0%, #000000 90%);
         background: linear-gradient(to bottom, transparent 0%, #000000 90%);
         padding: 25px 0;
-        font-family: 'Montez', cursive; }
+        font-family: 'Tangerine', cursive; }
         @media (max-width: 550px) {
           #recettes .recette .lastArticle h3 {
             padding: 55px 0; } }
@@ -584,7 +584,7 @@ footer .bg-circle-outline a, footer a:hover, footer .media a:focus {
           width: 100%; } }
       #recette .imgIngr .ingr h3 {
         font-size: 55px;
-        font-family: 'Montez', cursive; }
+        font-family: 'Tangerine', cursive; }
       #recette .imgIngr .ingr h4 {
         font-family: 'Julius Sans One', sans-serif;
         font-weight: 500; }

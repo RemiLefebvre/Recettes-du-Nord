@@ -26,7 +26,6 @@
     <!-- Last articles -->
 
     {% for recette in recettesTop %}
-    <!-- 1 -->
     <a href="{{ path('recette', {'id':recette.id}) }}">
       <article class="lastArticle" style="background-image:url('{{ recette.img }}')">
         <h3>{{ recette.name }}</h3>
@@ -42,7 +41,6 @@
     <!-- Last articles -->
 
     {% for recette in recettesBottom %}
-    <!-- 1 -->
     <a href="{{ path('recette', {'id':recette.id}) }}">
       <article class="lastArticle" style="background-image:url('{{ recette.img }}')">
         <h3>{{ recette.name }}</h3>
