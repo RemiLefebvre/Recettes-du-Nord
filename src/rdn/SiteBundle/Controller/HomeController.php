@@ -120,8 +120,7 @@ class HomeController extends Controller
 
     public function rechercheAction(Request $request)
     {
-      // echo "<pre>";
-      // die(var_dump());
+
       $post = $request->request->get('name');
 
       // On récupère le repository
@@ -141,7 +140,6 @@ class HomeController extends Controller
          else {
            $content = $this->renderView('rdnSiteBundle:Home:recettes.html.twig',array('recettes' => $recettes));
          }
-
 
         return new Response($content);
     }
