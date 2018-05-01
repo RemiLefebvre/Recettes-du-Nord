@@ -46,8 +46,8 @@
       </nav>
 
       <div class="navUser">
-        <form class="search form-inline">
-          <input tabindex="-1" class="searchZone" type="text" placeholder="">
+        <form class="search form-inline" action="/recherche" method="post">
+          <input name="name" tabindex="-1" class="searchZone" type="text" placeholder="">
         </form>
 
         <a id="connexion" href="{{ path('login') }}">

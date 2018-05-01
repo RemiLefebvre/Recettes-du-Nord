@@ -118,6 +118,34 @@ class HomeController extends Controller
         return new Response($content);
     }
 
+    public function rechercheAction(Request $request)
+    {
+      // echo "<pre>";
+      // die(var_dump());
+      $post = $request->request->get('name');
+
+      // On récupère le repository
+        $em = $this->getDoctrine()
+          ->getManager()
+          ->getRepository('rdnSiteBundle:Home');
+
+        $recettes = $em->createQueryBuilder('o')
+         ->where('o.name LIKE :name')
+         ->setParameter('name', '%'.$post.'%')
+         ->getQuery()
+         ->getResult();
+
+         if ($recettes == NULL) {
+           $content = $this->renderView('rdnSiteBundle:Home:recettes_null.html.twig',array('post' => $post));
+         }
+         else {
+           $content = $this->renderView('rdnSiteBundle:Home:recettes.html.twig',array('recettes' => $recettes));
+         }
+
+
+        return new Response($content);
+    }
+
 
     public function recetteAction($id)
     {

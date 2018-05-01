@@ -36,3 +36,8 @@ add:
     path:     /add
     defaults:
       _controller: rdnSiteBundle:Home:add
+
+recherche:
+    path:     /recherche
+    defaults:
+      _controller: rdnSiteBundle:Home:recherche
