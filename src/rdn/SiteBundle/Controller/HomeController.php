@@ -136,7 +136,7 @@ class HomeController extends Controller
 
          if ($recettes == NULL) {
            $message_title = "Aucune recettes trouvées";
-           $message = "Aucune recettes trouvées <br> Ardis le me le une tchotte fois!";
+           $message = "Ardis le me le une tchotte fois! ".$post ." ?";
            $content = $this->renderView('rdnSiteBundle:Home:message.html.twig',array('message_title' => $message_title , 'message' => $message));
          }
          else {
