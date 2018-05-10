@@ -135,7 +135,9 @@ class HomeController extends Controller
          ->getResult();
 
          if ($recettes == NULL) {
-           $content = $this->renderView('rdnSiteBundle:Home:recettes_null.html.twig',array('post' => $post));
+           $message_title = "Aucune recettes trouvées";
+           $message = "Aucune recettes trouvées <br> Ardis le me le une tchotte fois!";
+           $content = $this->renderView('rdnSiteBundle:Home:message.html.twig',array('message_title' => $message_title , 'message' => $message));
          }
          else {
            $content = $this->renderView('rdnSiteBundle:Home:recettes.html.twig',array('recettes' => $recettes));
@@ -190,36 +192,58 @@ class HomeController extends Controller
 
     public function add_messageAction(Request $request)
     {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+          $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+          $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+          $ip = $_SERVER['REMOTE_ADDR'];
+        }
+
+
         $message = new Message();
         $post = $_POST['form'];
+        $message->setIp($ip);
         $message->setName($post['name']);
         $message->setSurname($post['surname']);
         $message->setSubject($post['subject']);
         $message->setEmail($post['email']);
         $message->setMessage($post['message']);
 
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            $ip = $_SERVER['HTTP_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } else {
-            $ip = $_SERVER['REMOTE_ADDR'];
+
+        // VERIF IF LAST IP
+        $repository = $this->getDoctrine()
+          ->getManager()
+          ->getRepository('rdnSiteBundle:Message');
+
+        $query = $repository->createQueryBuilder('message')
+        ->select('message.ip')
+        ->orderBy('message.id', 'DESC')
+        ->getQuery();
+
+        $last_ip_message = $query->setMaxResults(1)->getOneOrNullResult();
+        if ($last_ip_message['ip'] == $ip) {
+          $message_title = "Oh! Vous avez déja envoyé un message il y a peu";
+          $message = "Réessayez un peu plus tard";
+          $content = $this->renderView('rdnSiteBundle:Home:message.html.twig',array('message_title' => $message_title , 'message' => $message));
+          return new Response($content);
         }
 
-        $message->setIp($ip);
+       // On récupère l'EntityManager
+       $em = $this->getDoctrine()->getManager();
 
-        // On récupère l'EntityManager
-         $em = $this->getDoctrine()->getManager();
+       // Étape 1 : On « persiste » l'entité
+       $em->persist($message);
 
-         // Étape 1 : On « persiste » l'entité
-         $em->persist($message);
+       // Étape 2 : On « flush » tout ce qui a été persisté avant
+       $em->flush();
 
-         // Étape 2 : On « flush » tout ce qui a été persisté avant
-         $em->flush();
+       // Puis on redirige vers la page de visualisation de cettte annonce
+       $message_title = "Message bien envoyé !";
+       $message = "I’a bin fait sin burre ";
+       $content = $this->renderView('rdnSiteBundle:Home:message.html.twig',array('message_title' => $message_title , 'message' => $message));
 
-         // Puis on redirige vers la page de visualisation de cettte annonce
-         return $this->redirectToRoute('accueil');
-
+       return new Response($content);
     }
 
     public function loginAction()
