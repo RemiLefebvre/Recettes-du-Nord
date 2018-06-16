@@ -76,7 +76,55 @@ fos_user:
         sender_name: "%mailer_user%"
 
 easy_admin:
+    site_name: "<em style='color:white'>Gestion des stocks</em>"
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
     entities:
-        # change the following to the namespaces of your own entities
-        - rdn\SiteBundle\Entity\Home
-        - rdn\SiteBundle\Entity\User
+        Home:
+            class: rdn\SiteBundle\Entity\Home
+            label: 'Recettes'
+            list:
+                title: "Recettes"
+            form:
+                title: 'Ajouter une recette'
+                form_options: { validation_groups: ['Default'] }
+                help: 'La recette proposer sera soumise à une validation du chef'
+
+            new:
+                form_options: { validation_groups: ['Default', 'Home'] }
+                fields:
+                    - { property: 'name', label: 'Nom de la recette' }
+                    - { property: 'img', label: 'Photo' }
+                    - { property: 'history', label: 'Histoire de la recette',type_options: { required: false },help: 'Histoire autour de la recette (Création, lieux ,etc)' }
+                    - { property: 'personne', label: 'Pour combien de personne' }
+                    - { property: 'time', label: 'Temps de cuisine' }
+                    - { property: 'ingr', label: 'Ingrédients' }
+                    - { property: 'imgIngr', label: 'Ingrédients en image' }
+                    - { property: 'step1', label: 'Étape une :' }
+                    - { property: 'step1img', label: 'Image de la première étape' }
+                    - { property: 'step2', label: 'Étape deux :' }
+                    - { property: 'step2img', label: 'Image de la seconde étape' }
+                    - { property: 'step3', label: 'Étape trois :' }
+                    - { property: 'step3img', label: 'Image de la troisième étape' }
+
+            edit:
+                title:  'Modifier une recette'
+
+        User:
+            class: rdn\SiteBundle\Entity\User
+            label: 'Membres'
+            help: 'Liste des membres confondu'
+            list:
+                fields: ['id',{ property: 'username', label: 'Nom' },{ property: 'email', label: 'Email' },{ property: 'roles', label: 'Role' },{ property: 'enabled', label: 'Actif' }]
+                title: "Membres"
+            form:
+                title: 'Ajouter un membre'
+                form_options: { validation_groups: ['Default'] }
+            new:
+                form_options: { validation_groups: ['Default', 'User'] }
+            edit:
+                title:  'Modifier profile'
+    design:
+        brand_color: '#e8a93c'
