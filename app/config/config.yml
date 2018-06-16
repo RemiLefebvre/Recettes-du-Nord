@@ -81,11 +81,19 @@ easy_admin:
         date:     'd/m/Y'
         time:     'H:i'
         datetime: 'd/m/Y H:i:s'
+    list:
+        actions:
+            - { name: 'show', label: false }
+            - { name: 'edit', label: 'Modifier' }
+            - { name: 'delete',icon: '', label: 'Supprimer' }
+            - { name: 'new', label: 'Ajouter' }
+            - { name: 'search',icon: 'search', label: 'Chercher' }
     entities:
         Home:
             class: rdn\SiteBundle\Entity\Home
             label: 'Recettes'
             list:
+                fields: ['id',{ property: 'name', label: 'Nom' },{ property: 'personne', label: 'Nb de personne' },{ property: 'time', label: 'Temps' }]
                 title: "Recettes"
             form:
                 title: 'Ajouter une recette'
@@ -95,17 +103,22 @@ easy_admin:
             new:
                 form_options: { validation_groups: ['Default', 'Home'] }
                 fields:
+                    - { type: 'tab' , label: 'La recette', icon: '' }
                     - { property: 'name', label: 'Nom de la recette' }
                     - { property: 'img', label: 'Photo' }
                     - { property: 'history', label: 'Histoire de la recette',type_options: { required: false },help: 'Histoire autour de la recette (Création, lieux ,etc)' }
                     - { property: 'personne', label: 'Pour combien de personne' }
                     - { property: 'time', label: 'Temps de cuisine' }
-                    - { property: 'ingr', label: 'Ingrédients' }
+                    - { property: 'ingr', label: 'Liste des ingrédients' }
                     - { property: 'imgIngr', label: 'Ingrédients en image' }
+                    - { type: 'tab' , label: 'Les étapes ', icon: '' }
+                    - { type: 'group', css_class: 'col-sm-12', label: 'Première étape' }
                     - { property: 'step1', label: 'Étape une :' }
                     - { property: 'step1img', label: 'Image de la première étape' }
+                    - { type: 'group', css_class: 'col-sm-12', label: 'Seconde étape' }
                     - { property: 'step2', label: 'Étape deux :' }
                     - { property: 'step2img', label: 'Image de la seconde étape' }
+                    - { type: 'group', css_class: 'col-sm-12', label: 'Troisième étape' }
                     - { property: 'step3', label: 'Étape trois :' }
                     - { property: 'step3img', label: 'Image de la troisième étape' }
 
@@ -128,3 +141,4 @@ easy_admin:
                 title:  'Modifier profile'
     design:
         brand_color: '#e8a93c'
+        form_theme: 'vertical'
