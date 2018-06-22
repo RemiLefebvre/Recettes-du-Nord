@@ -1,7 +1,7 @@
 # src/OC/PlatformBundle/Resources/config/routing.yml
 
 accueil:
-    path:     /accueil
+    path:     /
     defaults:
       _controller: rdnSiteBundle:Home:index
 
@@ -23,7 +23,7 @@ contact:
       _controller: rdnSiteBundle:Home:contact
 
 # login:
-#     path:     /login
+#     path:     /logine
 #     defaults:
 #       _controller: rdnSiteBundle:Home:login
 

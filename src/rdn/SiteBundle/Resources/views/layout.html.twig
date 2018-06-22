@@ -27,8 +27,8 @@
 
     <!-- HEADER -->
     <header id="header" class="hidden-sm-down">
-      <figure class="logo">
-        <img src="https://cdn.sstatic.net/Sites/cooking/img/apple-touch-icon@2.png?v=f987de6cbbd2" alt="logo">
+      <figure class="logo m-1">
+        <img src="image/favicon_white.png" alt="logo">
       </figure>
 
       <nav>
@@ -42,6 +42,11 @@
           <li>
             <a href="{{ path('contact') }}">Contact</a>
           </li>
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li>
+              <a href="{{ path('admin') }}">Profil</a>
+            </li>
+          {% endif %}
         </ul>
       </nav>
 
@@ -50,15 +55,22 @@
           <input name="name" tabindex="-1" class="searchZone" type="text" placeholder="">
         </form>
 
-        <a id="connexion" href="{{ path('login') }}">
-          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-          Connexion</a>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <a id="connexion" href="{{ path('fos_user_security_logout') }}">
+            Déconnexion
+          </a>
+        {% else %}
+          <a id="connexion" href="{{ path('fos_user_security_login') }}">
+            Connexion
+          </a>
+        {% endif %}
+
       </div>
     </header>
 
     <header id="headerPhone" class="hidden-md-up">
       <figure class="logo">
-        <img src="https://cdn.sstatic.net/Sites/cooking/img/apple-touch-icon@2.png?v=f987de6cbbd2" alt="logo">
+        <img src="image/favicon.png" alt="logo">
       </figure>
 
       <h1>Recettes du Nord</h1>
@@ -90,9 +102,24 @@
                 <li>
                   <a href="{{ path('contact') }}">Contact</a>
                 </li>
-                <li>
-                  <a href="{{ path('login') }}">Connexion</a>
-                </li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                  <li>
+                    <a href="{{ path('admin') }}">Profil</a>
+                  </li>
+                {% endif %}
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                  <li>
+                    <a id="connexion" href="{{ path('fos_user_security_logout') }}">
+                      Déconnexion
+                    </a>
+                  </li>
+                {% else %}
+                  <li>
+                    <a id="connexion" href="{{ path('fos_user_security_login') }}">
+                      Connexion
+                    </a>
+                  </li>
+                {% endif %}
                 <li>
                   <form class="search form-inline">
                     <input class="searchZone" tabindex="-1" type="text" placeholder="Rechercher">
