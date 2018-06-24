@@ -108,9 +108,7 @@ class HomeController extends Controller
         // $recettes est donc une instance de OC\PlatformBundle\Entity\Advert
         // ou null si l'id $id  n'existe pas, d'où ce if :
         if (null === $recettes) {
-          // A CHANGER >> ALLER VERS CONTOLLEUR ACCUEIL
-          $content = $this->renderView('rdnSiteBundle:Home:index.html.twig',array('nom' => 'oui'));
-          return new Response($content);
+          return $this->redirectToRoute('acceuil');
         }
 
         $content = $this->renderView('rdnSiteBundle:Home:recettes.html.twig',array('recettes' => $recettes));
@@ -159,10 +157,7 @@ class HomeController extends Controller
         // $recette est donc une instance de OC\PlatformBundle\Entity\Advert
         // ou null si l'id $id  n'existe pas, d'où ce if :
         if (null === $recette) {
-
-          // A CHANGER >> ALLER VERS CONTOLLEUR ACCUEIL
-          $content = $this->renderView('rdnSiteBundle:Home:index.html.twig',array('nom' => 'oui'));
-          return new Response($content);
+          return $this->redirectToRoute('acceuil');
         }
 
         $content = $this->renderView('rdnSiteBundle:Home:recette.html.twig',array('recette' => $recette));
