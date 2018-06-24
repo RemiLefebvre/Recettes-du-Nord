@@ -22,10 +22,10 @@ contact:
     defaults:
       _controller: rdnSiteBundle:Home:contact
 
-# login:
-#     path:     /logine
-#     defaults:
-#       _controller: rdnSiteBundle:Home:login
+create_account:
+    path:     /create_account
+    defaults:
+      _controller: rdnSiteBundle:Home:create_account
 
 add_message:
     path:     /add_message

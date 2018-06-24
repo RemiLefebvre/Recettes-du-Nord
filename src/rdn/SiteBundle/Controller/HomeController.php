@@ -246,10 +246,50 @@ class HomeController extends Controller
        return new Response($content);
     }
 
-    public function loginAction()
+    public function create_accountAction()
     {
-        $content = $this->renderView('rdnSiteBundle:Home:login.html.twig',array('nom' => 'oui'));
-
+      if (!isset($_POST['name']) OR !isset($_POST['email']) OR !isset($_POST['mdp']) OR !isset($_POST['mdpConf']) ) {
+        $message_title = "Tout les champs non pas étaient remplis!";
+        $message = "Arvette bin s'que teu note !";
+        $content = $this->renderView('rdnSiteBundle:Home:message.html.twig',array('message_title' => $message_title , 'message' => $message));
         return new Response($content);
+      }
+      $name = htmlspecialchars($_POST['name']);
+      $email = htmlspecialchars($_POST['email']);
+      $mdp = htmlspecialchars($_POST['mdp']);
+      $mdpConf = htmlspecialchars($_POST['mdpConf']);
+
+      // $user = new User();
+      $userManager = $this->get('fos_user.user_manager');
+
+      $email_exist = $userManager->findUserByEmail($email);
+       if($email_exist){
+         $message_title = "Cette adresse email existe déja.";
+         $message = "L'adresse email {$email} est déja utilisée";
+         $content = $this->renderView('rdnSiteBundle:Home:message.html.twig',array('message_title' => $message_title , 'message' => $message));
+         return new Response($content);
+       }
+
+       if ($mdp != $mdpConf) {
+         $message_title = "Les mots de passe ne sont pas identiques";
+         $message = "Arvette bin s'que teu note !";
+         $content = $this->renderView('rdnSiteBundle:Home:message.html.twig',array('message_title' => $message_title , 'message' => $message));
+         return new Response($content);
+       }
+
+      $user = $userManager->createUser();
+      $user->setUsernameCanonical($name);
+      $user->setUsername($name);
+      $user->setEmail($email);
+      $user->setEmailCanonical($email);
+      $user->setEnabled(1);
+      $user->setPlainPassword($mdp);
+
+      $userManager->updateUser($user);
+
+      $message_title = "Bonjour {$name}, votre compte est près !";
+      $message = "Pour vous connecter, utilisez votre nom de compte (votre email) : {$email}";
+      $content = $this->renderView('rdnSiteBundle:Home:message.html.twig',array('message_title' => $message_title , 'message' => $message));
+      return new Response($content);
     }
 }
